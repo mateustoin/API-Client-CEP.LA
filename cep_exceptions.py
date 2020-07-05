@@ -1,3 +1,4 @@
+# All of the excepts used in CepModel
 class DoesNotExist(Exception):
     pass
 
