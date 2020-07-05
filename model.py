@@ -4,6 +4,7 @@
     @author: mateustoin
 '''
 import requests
+import cep_exceptions as cpex
 
 class CepModel(object):
 
@@ -13,6 +14,9 @@ class CepModel(object):
         self.__headersText = {'Accept': 'text/plain'}
 
     def request_by_cep(self, cep):
-        urlRequest = self.__urlBase + cep
+        urlRequest = self.__urlBase + str(cep)
         status = requests.get(urlRequest, headers=self.__headersJson)
-        return status.json(), status.status_code
+        if (not len(status.json())):
+            raise cpex.CepDoesNotExist('Cep number {} doesn\'t exist!'.format(str(cep)))
+        else:
+            return status.json(), status.status_code

@@ -1,0 +1,2 @@
+class CepDoesNotExist(Exception):
+    pass

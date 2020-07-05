@@ -17,4 +17,4 @@ class CepControl(object):
    
 if __name__ == '__main__':
     control = CepControl()
-    control.search_by_cep('58052284')
+    control.search_by_cep(58052284)
