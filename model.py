@@ -33,7 +33,7 @@ class CepModel(object):
             cpex.BadRequestError: Raise if the response from the API is different than 200, which means good request. 
 
         Returns:
-            [type]: [description]
+            [json, int]: Returns JSON response from the API with the CEP informations and the status code from the requisition.
         """
         # Treating CEP if it's written with dot and/or hyphen
         cep = str(cep)
