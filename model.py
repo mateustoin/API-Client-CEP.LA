@@ -59,21 +59,42 @@ class CepModel(object):
 
 
     def request_by_neighborhood(self, uf: str, city: str):
-        # Requisition of the API with Json return format
+        """
+        Summary: Make request to cep.la API and retrieve information about
+                 all neighborhoods of a city.
+
+        Args:
+            uf (str): The two characteres that represents a state of Brazilian Country (e.g. PE, PB, MG).
+            city (str): Name of the city that user wants to know the neighborhoods.
+
+        Raises:
+            cpex.UfBadFormat: If user have written something wrong in 'uf'
+            cpex.DoesNotExist: If the combination of city and uf doesn't correspond to a correct one. The words are wrong or that place doesn't exist.
+
+        Returns:
+            [list, int]: Returns list of neighborhoods and response status of the API.
+        """
+        # Verifying if the UF field is correct
         if (len(uf) != 2):
             raise cpex.UfBadFormat('UF Bad Format Error. Must have 2 characters.')
         
         # Help user to put city and uf in a good format
+        # Treating first character of every word of the city
         city = string.capwords(city)
         city = city.replace(" ", "-")
         uf = uf.upper()
 
+        # Requisition of the API with Json return format
         urlRequest = self.__urlBase + uf + '/' + city
         status = requests.get(urlRequest, headers=self.__headersJson)
 
+        # Verifying if it was a good requisition and if the CEP returns something
+        if (status.status_code != 200):
+            raise cpex.BadRequestError('Status code {}: Bad Request Error'.format(status.status_code))
         if (not len(status.json()) or (len(status.json()[0]) > 2)):
             raise cpex.DoesNotExist('The City or UF that you are looking for doesn\'t correspond to the search about neighborhoods. Try a different format.')
         
+        #If the request returns several pages, take all of the data until the last page
         list_response = status.json()
         pag = 2
         while (len(status.json()) != 0):
@@ -83,5 +104,5 @@ class CepModel(object):
         
         # Removing the first element of the list, that is useless
         list_response = list_response[1:]
-        
+
         return list_response, status.status_code

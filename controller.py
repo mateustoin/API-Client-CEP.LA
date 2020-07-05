@@ -37,6 +37,16 @@ class CepControl(object):
             return 0
 
     def search_by_neighborhood(self, uf: str, city: str):
+        """
+        Summary: With a brazilian uf State and City user can retrieve information about all of the neighborhoods of that city.
+
+        Args:
+            uf (str): State of Brazil that you are looking for.
+            city (str): City of the State that you put in 'uf'
+
+        Returns:
+            [int]: Returns 1 if the request was successful, 0 if there was any problem.
+        """
         try:
             response, code = self.model.request_by_neighborhood(uf, city)
             CepView.display_neighborhood(response)
