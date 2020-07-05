@@ -8,10 +8,23 @@ class CepView(object):
 
     @staticmethod
     def view_by_cep(info_cep):
-        print('********Informações do CEP********')
+        print('\n*************Informações do CEP*************')
         print('Cep: ' + info_cep["cep"])
         print('UF: ' + info_cep["uf"])
         print('Cidade: ' + info_cep["cidade"])
         print('Bairro: ' + info_cep["bairro"])
         print('Logradouro: ' + info_cep["logradouro"])
-        print('**********************************\n')
+        print('********************************************\n')
+
+    @staticmethod
+    def display_bad_request_error(error):
+        print('\n********************************************')
+        print(error.args[0])
+        print('Try again later!')
+        print('********************************************')
+
+    @staticmethod
+    def display_wrong_cep_error(error):
+        print('\n********************************************')
+        print(error.args[0])
+        print('********************************************')
