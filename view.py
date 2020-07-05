@@ -30,9 +30,9 @@ class CepView(object):
         print('********************************************')
 
     @staticmethod
-    def display_problem_cep_error(error):
+    def display_problem_error(error):
         """
-        Summary: Display error about bad format or if CEP is wrong.
+        Summary: Display error about bad format or if anything is wrong.
 
         Args:
             error ([exception]): Contains the error string made in CepModel
@@ -41,3 +41,10 @@ class CepView(object):
         print('\n********************************************')
         print(error.args[0])
         print('********************************************')
+
+    @staticmethod
+    def display_neighborhood(info_city):
+        print('\n*************Bairros da Cidade*************')
+        for item in info_city:
+            print('Bairro: {}'.format(item["nome"]))
+        print('********************************************\n')

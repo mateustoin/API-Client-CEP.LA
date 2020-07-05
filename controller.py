@@ -30,8 +30,20 @@ class CepControl(object):
             CepView.display_bad_request_error(e)
             return 0
         except cpex.CepDoesNotExist as e:
-            CepView.display_problem_cep_error(e)
+            CepView.display_problem_error(e)
             return 0
         except cpex.CepBadFormat as e:
-            CepView.display_problem_cep_error(e)
+            CepView.display_problem_error(e)
+            return 0
+
+    def search_by_neighborhood(self, uf: str, city: str):
+        try:
+            response, code = self.model.request_by_neighborhood(uf, city)
+            CepView.display_neighborhood(response)
+            return 1
+        except cpex.UfBadFormat as e:
+            CepView.display_problem_error(e)
+            return 0
+        except cpex.DoesNotExist as e:
+            CepView.display_problem_error(e)
             return 0
