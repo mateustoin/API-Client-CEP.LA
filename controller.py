@@ -13,19 +13,25 @@ class CepControl(object):
         self.model = CepModel()
 
     def search_by_cep(self, cep):
+        """
+        Summary: With a brazilian CEP user can retrieve information about that place.
+
+        Args:
+            cep ([int] or [str]): Information about brazilian CEP.
+
+        Returns:
+            [int]: Returns 1 if the request was successful, 0 if there was any problem.
+        """
         try:
             response, code = self.model.request_by_cep(cep)
             CepView.view_by_cep(response)
+            return 1
         except cpex.BadRequestError as e:
             CepView.display_bad_request_error(e)
+            return 0
         except cpex.CepDoesNotExist as e:
-            CepView.display_wrong_cep_error(e)
-            tentative = input('Want to try other CEP? [y/n]')
-            if tentative == 'y':
-                self.search_by_cep(input('Insert other CEP: '))
-            else:
-                pass
-
-if __name__ == '__main__':
-    control = CepControl()
-    control.search_by_cep(51052284)
+            CepView.display_problem_cep_error(e)
+            return 0
+        except cpex.CepBadFormat as e:
+            CepView.display_problem_cep_error(e)
+            return 0

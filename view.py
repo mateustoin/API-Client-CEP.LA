@@ -18,13 +18,26 @@ class CepView(object):
 
     @staticmethod
     def display_bad_request_error(error):
+        """
+        Summary: Display error about bad requests from the API.
+
+        Args:
+            error ([exception]): Contains the error string made in CepModel.
+        """
         print('\n********************************************')
         print(error.args[0])
         print('Try again later!')
         print('********************************************')
 
     @staticmethod
-    def display_wrong_cep_error(error):
+    def display_problem_cep_error(error):
+        """
+        Summary: Display error about bad format or if CEP is wrong.
+
+        Args:
+            error ([exception]): Contains the error string made in CepModel
+        """
+
         print('\n********************************************')
         print(error.args[0])
         print('********************************************')

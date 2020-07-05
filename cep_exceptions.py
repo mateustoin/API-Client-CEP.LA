@@ -3,3 +3,6 @@ class CepDoesNotExist(Exception):
 
 class BadRequestError(Exception):
     pass
+
+class CepBadFormat(Exception):
+    pass
