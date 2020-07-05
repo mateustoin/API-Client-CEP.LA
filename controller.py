@@ -3,14 +3,18 @@
 
     @author: mateustoin
 '''
-from model import Model
-from view import View
+from model import CepModel
+from view import CepView
 
 class CepControl(object):
 
-    def __init__(self, model, view):
-        print("Criou controller!") 
+    def __init__(self):
+        self.model = CepModel()
 
+    def search_by_cep(self, cep):
+        response, code = self.model.request_by_cep(cep)
+        CepView.view_by_cep(response)
    
 if __name__ == '__main__':
-    print("Hello world!")
+    control = CepControl()
+    control.search_by_cep('58052284')

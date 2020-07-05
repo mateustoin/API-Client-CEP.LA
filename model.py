@@ -5,8 +5,14 @@
 '''
 import requests
 
-class Model(object):
+class CepModel(object):
 
     def __init__(self):
-        print("Criou model!")    
-        
+        self.__urlBase = 'http://cep.la/'
+        self.__headersJson = {'Accept': 'application/json'}
+        self.__headersText = {'Accept': 'text/plain'}
+
+    def request_by_cep(self, cep):
+        urlRequest = self.__urlBase + cep
+        status = requests.get(urlRequest, headers=self.__headersJson)
+        return status.json(), status.status_code
