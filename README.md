@@ -32,6 +32,8 @@
     A implementação do *CepControl* é feita para que o usuário tenha acesso aos métodos para o uso da API como um cliente. Estes métodos coletam os dados necessários do usuário, invoca o *model* para tratá-los e organizar os dados, depois utiliza esses resultados para invocar o *view* e exibir os dados para o usuário. Essa orquestração é feita apenas pelo *controller*, ao qual o usuário tem contato. Nele também são feitos os tratamentos de exceção, simplificando ainda mais o retorno para o usuário verificar e realizar ações a respeito.
 </p>
 
+---
+
 <img src="img/todo-list.png" style="height:300px, ">
 
 <p>
