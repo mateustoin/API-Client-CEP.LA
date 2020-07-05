@@ -3,8 +3,8 @@
 
     @author: mateustoin
 '''
-from model import CepModel
-from view import CepView
+from CepModel import CepModel
+from CepView import CepView
 import cep_exceptions as cpex
 
 class CepControl(object):
