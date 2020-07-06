@@ -14,6 +14,7 @@
 
 # Sumário
 1. [Introdução](#introducao) 
+1. [Instalando pacotes](#instalacao)
 2. [Padrão Model-View-Controller](#mvc)
     - [CepModel](#cepmodel)
     - [CepView](#cepview)
@@ -22,6 +23,17 @@
 4. [Uso do API Client](#usage)
     - [Função de busca de informações por CEP](#cep)
     - [Função de busca de bairros](#bairro)
+
+---
+
+# Instalando pacotes
+
+Para instalar os pacotes utilizados no projeto, basta ter o *pip* instalado e utilizar o comando a seguir:
+
+`pip install -r requirements.txt`
+
+- *requests* é utilizado para realizar todas as requisições à API cep.la
+- *rich* é utilizado para formatar os resultados, implementados em CepView para a visualização do usuário
 
 ---
 
