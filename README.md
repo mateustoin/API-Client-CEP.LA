@@ -40,12 +40,12 @@
     Aqui serão apresentadas as próximas ideias a serem implementadas para que o projeto tenha cada vez mais funcionalidades.
 </p>
 
-### - [x ] Procura informações de endereço através de um CEP
-### - [x ] Procura nomes dos bairros de cidades
-### - [ ] Descobrir CEP através de um endereço
-### - [ ] Descobrir se uma cidade, de um determinado estado possui distritos
-### - [ ] Listar Ruas de algum bairro da cidade
-### - [ ] Etc... (To-Do)
+- [x ] Procura informações de endereço através de um CEP
+- [x ] Procura nomes dos bairros de cidades
+- [ ] Descobrir CEP através de um endereço
+- [ ] Descobrir se uma cidade, de um determinado estado possui distritos
+- [ ] Listar Ruas de algum bairro da cidade
+- [ ] Etc... (To-Do)
 
 ---
 
