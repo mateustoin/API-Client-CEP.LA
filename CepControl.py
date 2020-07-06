@@ -29,7 +29,7 @@ class CepControl(object):
         except cpex.BadRequestError as e:
             CepView.display_bad_request_error(e)
             return 0
-        except cpex.CepDoesNotExist as e:
+        except cpex.DoesNotExist as e:
             CepView.display_problem_error(e)
             return 0
         except cpex.CepBadFormat as e:

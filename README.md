@@ -62,20 +62,9 @@ if __name__ == '__main__':
     control = CepControl()
     control.search_by_cep(input('Insira um CEP válido: '))
 ```
-> INPUT 
+> TERMINAL
 
-```Insira um CEP válido: 76629-972```
-
-> OUTPUT
-```
-*************Informações do CEP*************
-Cep: 76629972
-UF: GO
-Cidade: Goiás
-Bairro: Uvá
-Logradouro: Avenida Leste, s/n Quadra 8 Lote 27
-********************************************
-```
+<img src="img/out_cep.png" style="height:300px, ">
 
 ## 2. Procura nomes dos bairros de cidades
 
@@ -89,26 +78,6 @@ if __name__ == '__main__':
     control.search_by_neighborhood(uf='pe', city='recife')
 ```
 
-> OUTPUT (saída resumida)
-```
-*************Bairros da Cidade*************
-Bairro: Aflitos
-Bairro: Afogados
-Bairro: Alto do Mandu
-Bairro: Alto José Bonifácio
-Bairro: Alto José do Pinho
-Bairro: Alto Santa Terezinha
-Bairro: Apipucos
-Bairro: Areias
-...
-Bairro: Torre
-Bairro: Torreão
-Bairro: Torrões
-Bairro: Totó
-Bairro: Vasco da Gama
-Bairro: Várzea
-Bairro: Zumbi
-Bairro: Água Fria
-Bairro: Área Rural de Recife
-********************************************
-```
+> TERMINAL (apenas parte da saída na imagem)
+
+<img src="img/bairro.png" style="height:300px, ">

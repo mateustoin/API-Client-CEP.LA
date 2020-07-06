@@ -3,18 +3,24 @@
 
     @author: mateustoin
 '''
+from rich.console import Console
+from rich.table import Column, Table
+
+console = Console()
 
 class CepView(object):
 
     @staticmethod
     def view_by_cep(info_cep):
-        print('\n*************Informações do CEP*************')
-        print('Cep: ' + info_cep["cep"])
-        print('UF: ' + info_cep["uf"])
-        print('Cidade: ' + info_cep["cidade"])
-        print('Bairro: ' + info_cep["bairro"])
-        print('Logradouro: ' + info_cep["logradouro"])
-        print('********************************************\n')
+        table = Table(show_header=True, header_style="black on green")
+        table.add_column("", justify="center", style="dim")
+        table.add_column("Informações do CEP", justify="left")
+        table.add_row('CEP:', info_cep["cep"], style='green')
+        table.add_row('UF:', info_cep["uf"], style='green')
+        table.add_row('Cidade:', info_cep["cidade"], style='green')
+        table.add_row('Bairro:', info_cep["bairro"], style='green')
+        table.add_row('Logradouro:', info_cep["logradouro"], style='green')
+        console.print(table)
 
     @staticmethod
     def display_bad_request_error(error):
@@ -25,9 +31,9 @@ class CepView(object):
             error ([exception]): Contains the error string made in CepModel.
         """
         print('\n********************************************')
-        print(error.args[0])
-        print('Try again later!')
-        print('********************************************')
+        console.print(error.args[0], style='red on white')
+        console.print('Try again later!', style='red on white')
+        #print('********************************************')
 
     @staticmethod
     def display_problem_error(error):
@@ -38,13 +44,14 @@ class CepView(object):
             error ([exception]): Contains the error string made in CepModel
         """
 
-        print('\n********************************************')
-        print(error.args[0])
-        print('********************************************')
+        #print('\n********************************************')
+        console.print(error.args[0], style='white on red')
+        #print('********************************************')
 
     @staticmethod
     def display_neighborhood(info_city):
-        print('\n*************Bairros da Cidade*************')
+        table = Table(show_header=True, header_style="black on green")
+        table.add_column("Bairros da cidade", justify="center")
         for item in info_city:
-            print('Bairro: {}'.format(item["nome"]))
-        print('********************************************\n')
+            table.add_row(item["nome"], style='green')
+        console.print(table)
